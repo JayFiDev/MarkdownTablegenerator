@@ -16,40 +16,32 @@ export function activate(context: vscode.ExtensionContext) {
     // The commandId parameter must match the command field in package.json
     let disposable = vscode.commands.registerCommand('extension.generateTable', () => {
 
-        function editText(text : string ) {
+        function editText(text : string ) : boolean {
 			let editor = vscode.window.activeTextEditor;
-			let insertPosition : vscode.Position = editor.selection.active;
-
-			//edit text
-			editor.edit(edit => {
-				edit.insert(insertPosition, text);
-			});		
+			
+			if(editor !== undefined){
+                let insertPosition : vscode.Position = editor.selection.active;
+                editor.edit(edit => {
+                    edit.insert(insertPosition, text);
+                });	
+                return true;
+            } else {
+                vscode.window.showInformationMessage('Please open a file before generating the table');
+                return false;
+            }
         }
         
         function generateString(rows, columns) : string {
+
             let base_header =       "       |";
             let base_seperator =    "  ---  |";
-            
-            var string_header = "|";
-            var string_seperator = "|";
-            var string_base = "";
 
-            
-            for (var _i = 0; _i < columns; _i++) {
-                string_header = string_header + base_header;
-                string_seperator = string_seperator + base_seperator;
-            }
-
-            for(var _j = 0; _j < rows; _j++){
-                string_base = string_base + string_header + '\n';
-            }
-            console.log(string_header);
-            console.log(string_seperator);
-            console.log(string_base);
+            var string_header = "|" + base_header.repeat(columns);
+            var string_seperator = "|" + base_seperator.repeat(columns);
+            var string_base  = (string_header + '\n').repeat(rows);
 
             return string_header + '\n' + string_seperator + '\n' + string_base;
         }
-
         
         // The code you place here will be executed every time your command is executed
         var user_input;
@@ -60,18 +52,26 @@ export function activate(context: vscode.ExtensionContext) {
         let options: vscode.InputBoxOptions = {
             prompt: "Please insert size of table: \"Rows,Columns\" ",
             placeHolder: "3,3"
-        }
+        };
         
         vscode.window.showInputBox(options).then(value => {
             console.log(value);
-            user_input = value.split(',');
-            rows = user_input[0];
-            columns = user_input[1];
-            console.log(user_input);
+            var regexp = new RegExp('[0-9]+(,[0-9]+)');
+            if(regexp.test(value)){
+                user_input = value.split(',');
+                rows = user_input[0];
+                columns = user_input[1];
+                console.log(user_input);
 
+                
+                if(editText(generateString(rows, columns))) {
+                    vscode.window.showInformationMessage('New markdown table was created...');
+                }
+            } else {
+                vscode.window.showInformationMessage('Wrong input format, please use \"Rows,Columns\"');
+            }
             
-            editText(generateString(rows, columns));
-            vscode.window.showInformationMessage('New markdown table was created...');
+            
         });
         
         // Display a message box to the user
