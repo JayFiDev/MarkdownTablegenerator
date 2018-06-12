@@ -18,7 +18,11 @@
         "commands": [
             {
                 "command": "extension.generateTable",
-                "title": "Generate Markdown Table"
+                "title": "Markdown: New Table"
+            },
+            {
+                "command": "extension.generateTableWithAlignment",
+                "title": "Markdown: New Table With Alignment"
             }
         ]
     },
