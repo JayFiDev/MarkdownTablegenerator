@@ -7,12 +7,14 @@ Quickly generate Markdown formatted tables for your documentation.
 The extension features two different ways to generate Markdown tables:
 
 * `Markdown: Generate Table`  
-* `Markdown: Generate Table with Alignment`
+Generate a table with number of rows and columns as input.
+* `Markdown: Generate Table with Alignment`  
+Generate a table with numbers of rows and colums as input, as well as the alignment of the text in the table
 
 
 
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+> Tip: left alignment is standard!
 
 
 -------------
