@@ -1,22 +1,40 @@
-//
-// Note: This example test is leveraging the Mocha test framework.
-// Please refer to their documentation on https://mochajs.org/ for help.
-//
 
-// The module 'assert' provides assertion methods from node
 import * as assert from 'assert';
+import * as myExtension from '../extension';
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
-// import * as vscode from 'vscode';
-// import * as myExtension from '../extension';
-
-// Defines a Mocha test suite to group tests of similar kind together
 suite("Extension Tests", function () {
 
-    // Defines a Mocha unit test
-    test("Something 1", function() {
-        assert.equal(-1, [1, 2, 3].indexOf(5));
-        assert.equal(-1, [1, 2, 3].indexOf(0));
+    test("parseInputCorrectInputFormat", function() {
+        var expected_valid : boolean = true;
+        var expected_columns = "3";
+        var expected_rows = "3";
+        var result = myExtension.parseInput("3,3");
+        assert.equal( expected_valid, result.valid);
+        assert.equal( expected_rows, result.rows);
+        assert.equal( expected_columns, result.columns);
     });
+
+    test("parseInputWrongInputFormat", function() {
+        var expected_valid : boolean = true;
+        var expected_columns = "3";
+        var expected_rows = "3";
+        var result = myExtension.parseInput("3,b");
+        assert.notEqual( expected_valid, result.valid);
+        assert.notEqual( expected_rows, result.rows);
+        assert.notEqual( expected_columns, result.columns);
+        
+    });
+
+    test("generateString3,3,center", function() {
+        
+        var expected_string = "|       |       |       |" + '\n' +    
+                            "| :---: | :---: | :---: |" + '\n' +
+                            "|       |       |       |" + '\n' +
+                            "|       |       |       |" + '\n' +
+                            "|       |       |       |" + '\n' + '\n' ;
+        var result_string = myExtension.generateString("3", "3", "center");
+        assert.equal( expected_string, result_string );
+        
+    });
+
 });

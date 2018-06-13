@@ -1,24 +1,34 @@
 {
     "name": "tablegenerator",
-    "displayName": "TableGenerator",
+    "displayName": "Markdown Table Generator",
     "description": "Generate formatted tables for markdown",
-    "version": "0.0.1",
-    "publisher": "JayF",
+    "version": "1.0.0",
+    "publisher": "JayFiDev",
     "engines": {
         "vscode": "^1.24.0"
     },
     "categories": [
-        "Other"
+        "Other", "Programming Languages"
     ],
+    "icon": "images/icon.png",
+    "galleryBanner" : {
+		"color": "#0A6A6A  ",
+		"theme" : "dark"
+	},
     "activationEvents": [
-        "onCommand:extension.generateTable"
+        "onCommand:extension.generateTable",
+        "onCommand:extension.generateTableWithAlignment"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
                 "command": "extension.generateTable",
-                "title": "Generate Markdown Table"
+                "title": "Markdown: New Table"
+            },
+            {
+                "command": "extension.generateTableWithAlignment",
+                "title": "Markdown: New Table With Alignment"
             }
         ]
     },
