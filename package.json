@@ -13,7 +13,7 @@
     "icon": "images/icon.png",
     "galleryBanner" : {
 		"color": "#0A6A6A  ",
-		"theme" : "dark"
+		"theme" : "light"
 	},
     "activationEvents": [
         "onCommand:extension.generateTable",
