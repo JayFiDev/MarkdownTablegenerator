@@ -1,9 +1,9 @@
 {
     "name": "tablegenerator",
-    "displayName": "TableGenerator",
+    "displayName": "Markdown TableGenerator",
     "description": "Generate formatted tables for markdown",
-    "version": "0.0.1",
-    "publisher": "JayF",
+    "version": "1.0.0",
+    "publisher": "JayFi Development",
     "engines": {
         "vscode": "^1.24.0"
     },

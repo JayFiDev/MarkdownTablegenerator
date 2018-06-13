@@ -10,7 +10,7 @@ export function activate(context: vscode.ExtensionContext) {
             
             let options: vscode.InputBoxOptions = {
                 prompt: "Please insert size of table: \"Rows,Columns\" ",
-                placeHolder: "3,3"
+                placeHolder: "[Rows],[Columns]  \"3,3\""
             };
 
             var value = await vscode.window.showInputBox(options);
@@ -39,7 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
         
             let options: vscode.InputBoxOptions = {
                 prompt: "Please insert size of table: \"Rows,Columns\" ",
-                placeHolder: "3,3"
+                placeHolder: "[Rows],[Columns]  \"3,3\""
             };
             
             var value = await vscode.window.showInputBox(options);
