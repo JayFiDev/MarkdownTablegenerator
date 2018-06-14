@@ -16,18 +16,18 @@
 		"theme" : "dark"
 	},
     "activationEvents": [
-        "onCommand:extension.generateTable",
-        "onCommand:extension.generateTableWithAlignment"
+        "onCommand:markdown.generateTable",
+        "onCommand:markdown.generateTableWithAlignment"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.generateTable",
+                "command": "markdown.generateTable",
                 "title": "Markdown: New Table"
             },
             {
-                "command": "extension.generateTableWithAlignment",
+                "command": "markdown.generateTableWithAlignment",
                 "title": "Markdown: New Table With Alignment"
             }
         ]

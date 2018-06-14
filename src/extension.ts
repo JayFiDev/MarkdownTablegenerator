@@ -6,7 +6,7 @@ import * as vscode from 'vscode';
 export function activate(context: vscode.ExtensionContext) {
 
 
-        let disposable_align = vscode.commands.registerCommand('extension.generateTableWithAlignment', async () => {
+        let disposable_align = vscode.commands.registerCommand('markdown.generateTableWithAlignment', async () => {
             
             let options: vscode.InputBoxOptions = {
                 prompt: "Please insert size of table: \"Rows,Columns\" ",
@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
         });
         
 
-        let disposable = vscode.commands.registerCommand('extension.generateTable', async () => {
+        let disposable = vscode.commands.registerCommand('markdown.generateTable', async () => {
         
             let options: vscode.InputBoxOptions = {
                 prompt: "Please insert size of table: \"Rows,Columns\" ",
